@@ -18,26 +18,36 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     List<WordCloud> list ;
-    String text = "الأندرويد  هو نظام تشغيل مجاني، طورته شركة جوجل  وهو نظام تشغيل للأجهزة التي تحتوي على شاشات اللمس كالهواتف الذكية  والأجهزة اللوحية   يقوم على تطوير الأندرويد  عدد كبير من المطورين والمبرمجين الذين يعتمدون على لغة الجافا   لتطوير برامجهم. يعد نظام الأندرويد  نظام التشغيل الاوسع انتشاراً، نظراً لما يتميز به من مميزات، جعلته مفضلاً عند العديد من النَّاس، منها";
+    String text = "one two three four five six seven eight nine ten eleven twelve thirteen fourteen fiveteen sixteen seventeen eighteen nineteen twenty";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         generateRandomText();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
         WordCloudView wordCloud = (WordCloudView) findViewById(R.id.wordCloud);
         wordCloud.setDataSet(list);
-        wordCloud.setSize(200,200);
         wordCloud.setColors(ColorTemplate.MATERIAL_COLORS);
         wordCloud.notifyDataSetChanged();
-
     }
+
+
 
     private void generateRandomText() {
         String[] data = text.split(" ");
         list = new ArrayList<>();
         Random random = new Random();
+        list.add(new WordCloud("zero",0));
+
+        int weight = data.length + 12 ;
+
         for (String s : data) {
-            list.add(new WordCloud(s,random.nextInt(50)));
+            list.add(new WordCloud(s,--weight));
         }
     }
 }
