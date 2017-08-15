@@ -12,7 +12,8 @@ var t = test.map(function(d) {  return {text: d.word, size: d.size, color: d.col
         .size([parentHeight, parentWidth ])
        .words(t)
         .padding(5)
-        .rotate(function() { return ~~(Math.random() * 2) * 90; })
+        /*.rotate(function() { return ~~(Math.random() * 2) * 90; })*/
+        .rotate(function() { return 0; })
         .font(userChosenFontFace)
         .fontSize(function(d) { return d.size; })
         .on("end", draw);

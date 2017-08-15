@@ -52,7 +52,7 @@ public class WordCloudView extends WebView {
         JavascriptInterface myJavascriptInterface = new JavascriptInterface(mContext);
 
         myJavascriptInterface
-                .setCloudParams("", getData(), "FreeSans", parentWidth*3, parentHeight*3);
+                .setCloudParams("", getData(), "FreeSans", (int) (parentWidth*2.0d), (int) (parentHeight*2.0d));
         addJavascriptInterface(myJavascriptInterface, "jsinterface");
         WebSettings webSettings = getSettings();
         webSettings.setBuiltInZoomControls(true);
