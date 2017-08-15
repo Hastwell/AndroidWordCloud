@@ -52,3 +52,16 @@ dependencies {
 }
 apply from: './bintrayv1.gradle'
 apply from: './installv1.gradle'
+
+task deleteAar(type: Delete) {
+    delete 'libs/logmanagementlib.jar'
+}
+
+task createAar(type: Copy) {
+    from('library/build/outputs/aar/')
+    into('libs/aar/')
+    include('library-release.aar')
+    rename('library-release.aar', 'AndroidWordCloud-HH.aar')
+}
+
+createAar.dependsOn(deleteAar, build)
