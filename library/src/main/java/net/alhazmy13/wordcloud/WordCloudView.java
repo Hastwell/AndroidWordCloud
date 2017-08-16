@@ -127,6 +127,13 @@ public class WordCloudView extends WebView {
     }
 
     private float scale(int inputY) {
+
+        // Escape before divide-by-zero occurs
+        if(old_max == old_min)
+        {
+            return old_min;
+        }
+
         float x = inputY - old_min;
         float y = old_max - old_min;
         float percent = x / y;
